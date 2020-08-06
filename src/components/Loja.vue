@@ -32,10 +32,10 @@ export default {
       }
   },
   methods: {
-    // ...mapActions(["adicionarProduto"]),
-    adicionaProduto(produto) {
-        this.$$store.dispatch('adicionarProduto', produto)
-    },
+    ...mapActions('carrinho', ["adicionarProduto"]),
+    // adicionaProduto(produto) {
+    //     this.$$store.dispatch('adicionarProduto', produto)
+    // },
     adicionar() {
       const produto = {
         id: this.sequencia,
@@ -46,8 +46,10 @@ export default {
       this.sequencia++;
       // this.$store.state.produtos.push(produto)
       //this.$store.commit('adicionarProduto', produto)
-      // this.adicionarProduto(produto)
-      this.$store.dispatch("adicionarProduto", produto);
+      this.adicionarProduto(produto)
+      // this.$store.dispatch("adicionarProduto", produto);
+      // console.log(this.$store.getters.getNome)
+      // console.log(this.$store.getters.getNomeCompleto)
     },
   },
 };
